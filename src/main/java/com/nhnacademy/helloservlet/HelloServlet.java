@@ -24,6 +24,8 @@ public class HelloServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        CounterUtils.increaseCounter(getServletContext());
+
         String title=getServletConfig().getInitParameter("title");
         String name=getServletConfig().getInitParameter("name");
 
@@ -50,6 +52,7 @@ public class HelloServlet extends HttpServlet {
             writer.println("<h1>hello servlet!</h1>");
             writer.println("<h1>안녕 서블릿!</h1>");
             writer.printf("<h1>hello %s %s!</h1>\n", title, name);
+            writer.println("<h1>counter: " +getServletContext().getAttribute("counter") +"</h1>");
             writer.println("</body>");
             writer.println("</html>");
         } catch (IOException e) {
