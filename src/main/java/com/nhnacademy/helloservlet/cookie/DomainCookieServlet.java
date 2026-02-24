@@ -27,6 +27,7 @@ public class DomainCookieServlet extends HttpServlet {
         }
     }
 
+    // 쿠키 쓰기, 읽기 링크 보여주는 페이지
     private void show(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         resp.setCharacterEncoding("utf-8");
@@ -50,6 +51,7 @@ public class DomainCookieServlet extends HttpServlet {
 
     private static final String COOKIE_NAME = "cook2";
 
+    // 쿠키 읽기
     private void readCookie(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if(Objects.isNull(req.getCookies())){
             return;
@@ -66,6 +68,7 @@ public class DomainCookieServlet extends HttpServlet {
 
     private static final String MORE_PATH = "/domain-cookie/more/write";
 
+    // 쿠키 쓰기
     private void writeCookie(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String domain = req.getParameter("domain");
         String path = MORE_PATH.equals(req.getRequestURI())

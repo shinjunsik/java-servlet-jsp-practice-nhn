@@ -102,7 +102,7 @@
 
     <servlet-mapping>
         <servlet-name>setCookieServlet</servlet-name>
-        <url-pattern>/set-coockie</url-pattern>
+        <url-pattern>/set-cookie</url-pattern>
     </servlet-mapping>
     
     <!-- read cookie -->
@@ -118,12 +118,12 @@
 
     <!-- domain cookie -->
     <servlet>
-        <servlet-name>domainCookiServlet</servlet-name>
+        <servlet-name>domainCookieServlet</servlet-name>
         <servlet-class>com.nhnacademy.helloservlet.cookie.DomainCookieServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>domainCookiServlet</servlet-name>
+        <servlet-name>domainCookieServlet</servlet-name>
         <url-pattern>/domain-cookie/*</url-pattern>
     </servlet-mapping>
     
@@ -131,7 +131,7 @@
     <servlet>
         <servlet-name>loginServlet</servlet-name>
         <servlet-class>com.nhnacademy.helloservlet.login.LoginServlet</servlet-class>
-        
+        <!-- init-param: Servlet의 초기 파라미터 -->
         <init-param>
             <param-name>id</param-name>
             <param-value>admin</param-value>
