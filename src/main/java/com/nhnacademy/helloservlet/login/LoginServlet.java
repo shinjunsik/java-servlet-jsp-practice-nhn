@@ -1,7 +1,10 @@
 package com.nhnacademy.helloservlet.login;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebInitParam;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,6 +15,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Objects;
 
+@WebServlet(
+        name="loginServlet",
+        urlPatterns = "/login",
+        initParams= {
+                @WebInitParam(name="id", value="admin"),
+                @WebInitParam(name="pwd", value="1234"),
+        }
+)
 @Slf4j
 public class LoginServlet extends HttpServlet {
     private String initParamId;
@@ -67,6 +78,9 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect("/login");
         } else {
             resp.sendRedirect("/login.html");
+//            RequestDispatcher rd = req.getRequestDispatcher("/login.html");
+//            rd.forward(req, resp);
+            log.error("Login failed for Id: {}", id);
         }
     }
 }

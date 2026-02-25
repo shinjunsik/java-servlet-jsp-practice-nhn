@@ -1,6 +1,7 @@
 package com.nhnacademy.helloservlet.cookie;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,6 +11,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Objects;
 
+@WebServlet (
+        name="setCookieServlet",
+        urlPatterns = "/set-cookie"
+)
 public class SetCookieServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -1,7 +1,9 @@
-package com.nhnacademy.helloservlet;
+package com.nhnacademy.helloservlet.exercise;
 
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebInitParam;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,6 +13,13 @@ import java.io.PrintWriter;
 import java.util.Optional;
 import java.util.logging.Logger;
 
+@WebServlet (
+        name="counterServlet",
+        urlPatterns = "/counter",
+        initParams = {
+                @WebInitParam(name="counter", value="100"),
+        }
+)
 public class CounterServlet extends HttpServlet {
 
     private static final Logger log=Logger.getLogger(CounterServlet.class.getName());

@@ -1,15 +1,19 @@
-package com.nhnacademy.helloservlet;
+package com.nhnacademy.helloservlet.exercise;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Objects;
 import java.util.logging.Logger;
 
+@WebServlet (
+        name="requestServlet",
+        urlPatterns = "/req"
+)
 public class RequestServlet extends HttpServlet {
 
     private static final Logger log= Logger.getLogger(RequestServlet.class.getName());

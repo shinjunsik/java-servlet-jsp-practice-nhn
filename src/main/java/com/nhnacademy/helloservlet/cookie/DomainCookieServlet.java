@@ -1,6 +1,7 @@
 package com.nhnacademy.helloservlet.cookie;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,6 +12,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Objects;
 
+@WebServlet (
+        name="domainCookieServlet",
+        urlPatterns = "/domain-cookie/*"
+)
 @Slf4j
 public class DomainCookieServlet extends HttpServlet {
 

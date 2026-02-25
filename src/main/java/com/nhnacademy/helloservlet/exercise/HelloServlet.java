@@ -1,4 +1,4 @@
-package com.nhnacademy.helloservlet;
+package com.nhnacademy.helloservlet.exercise;
 
 import java.io.*;
 import java.util.Objects;
@@ -6,9 +6,18 @@ import java.util.logging.Logger;
 
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebInitParam;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
 
+@WebServlet(
+        name="helloServlet",
+        urlPatterns = "/hello",
+        initParams = {
+                @WebInitParam(name="title", value="Mr."),
+                @WebInitParam(name="name", value="marco"),
+        }
+)
 public class HelloServlet extends HttpServlet {
 
     private static final Logger log = Logger.getLogger(HelloServlet.class.getName());
@@ -24,7 +33,6 @@ public class HelloServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        CounterUtils.increaseCounter(getServletContext());
 
         String title=getServletConfig().getInitParameter("title");
         String name=getServletConfig().getInitParameter("name");

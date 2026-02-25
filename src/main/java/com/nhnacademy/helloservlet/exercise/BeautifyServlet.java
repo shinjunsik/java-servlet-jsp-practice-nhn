@@ -1,6 +1,5 @@
-package com.nhnacademy.helloservlet;
+package com.nhnacademy.helloservlet.exercise;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

@@ -1,4 +1,4 @@
-package com.nhnacademy.helloservlet;
+package com.nhnacademy.helloservlet.exercise;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -10,6 +10,10 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Logger;
 
+@WebServlet (
+        name="multipleServlet",
+        urlPatterns = "/multiple"
+)
 public class MultipleServlet extends HttpServlet {
 
     private static final Logger log=Logger.getLogger(MultipleServlet.class.getName());

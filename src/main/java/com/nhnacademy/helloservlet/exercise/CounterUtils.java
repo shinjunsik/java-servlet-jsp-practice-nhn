@@ -1,4 +1,4 @@
-package com.nhnacademy.helloservlet;
+package com.nhnacademy.helloservlet.exercise;
 
 import jakarta.servlet.ServletContext;
 
