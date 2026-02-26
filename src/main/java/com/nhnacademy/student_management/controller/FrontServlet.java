@@ -1,6 +1,6 @@
-package com.nhnacademy.student_management.servlet;
+package com.nhnacademy.student_management.controller;
 
-import jakarta.servlet.RequestDispatcher;
+import com.nhnacademy.student_management.controller.impl.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -28,11 +28,10 @@ public class FrontServlet extends HttpServlet {
         resp.setCharacterEncoding("utf-8");
 
         try {
-            String servletPath=resolveServlet(req.getServletPath());
-            RequestDispatcher rd=req.getRequestDispatcher(servletPath);
-            rd.include(req,resp);
+            Command command=resolveServlet(req.getServletPath(), req.getMethod());
+            String view=command.execute(req,resp);
 
-            String view=(String) req.getAttribute("view");
+
             log.info("View: {}", view);
             if(view.startsWith(REDIRECT_PREFIX)) {
                 resp.sendRedirect(view.substring(REDIRECT_PREFIX.length()));
@@ -50,24 +49,25 @@ public class FrontServlet extends HttpServlet {
         }
     }
 
-    private String resolveServlet(String servletPath) {
-        String processingServlet =null;
-        if("/student/list.do".equals(servletPath)) {
-            processingServlet="/student/list";
-        } else if("/student/register.do".equals(servletPath)) {
-            processingServlet="/student/register";
-        } else if("/student/view.do".equals(servletPath)) {
-            processingServlet="/student/view";
-        } else if("/student/update.do".equals(servletPath)) {
-            processingServlet="/student/update";
-        } else if("/student/delete.do".equals(servletPath)) {
-            processingServlet="/student/delete";
+    private Command resolveServlet(String servletPath, String method) {
+        Command command=null;
+        if("/student/list.do".equals(servletPath) && "GET".equalsIgnoreCase(method) ){
+            command = new StudentListController();
+        }else if("/student/view.do".equals(servletPath) && "GET".equalsIgnoreCase(method) ){
+            command = new StudentViewController();
+        }else if("/student/delete.do".equals(servletPath) && "POST".equalsIgnoreCase(method) ){
+            command = new StudentDeleteController();
+        }else if("/student/update.do".equals(servletPath) && "GET".equalsIgnoreCase(method) ){
+            command = new StudentUpdateFormController();
+        }else if("/student/update.do".equals(servletPath) && "POST".equalsIgnoreCase(method) ){
+            command = new StudentUpdateController();
+        }else if("/student/register.do".equals(servletPath) && "GET".equalsIgnoreCase(method) ){
+            command = new StudentRegisterFormController();
+        }else if("/student/register.do".equals(servletPath) && "POST".equalsIgnoreCase(method) ){
+            command = new StudentRegisterController();
+        }else if("/error.do".equals(servletPath)){
+            command = new ErrorController();
         }
-
-        else {
-            throw new IllegalArgumentException("Unknown servlet path: "+servletPath);
-        }
-
-        return processingServlet;
+        return command;
     }
 }

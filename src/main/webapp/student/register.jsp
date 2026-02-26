@@ -25,6 +25,10 @@
 </c:choose>
 
 <form method="post" action="${action}">
+    <!-- id가 수정되는 경우를 방지해서 hidden으로 원래 id값을 저장 -->
+    <c:if test="${not empty student}">
+        <input type="hidden" name="originalId" value="${student.id}">
+    </c:if>
     <table>
         <tbody>
         <tr>
