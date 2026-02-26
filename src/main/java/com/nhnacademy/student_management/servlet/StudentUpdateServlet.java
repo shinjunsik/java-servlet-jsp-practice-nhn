@@ -35,7 +35,8 @@ public class StudentUpdateServlet extends HttpServlet {
         Student student=studentRepository.getStudentById(id);
 
         req.setAttribute("student", student);
-        req.getRequestDispatcher("/student/register.jsp").forward(req,resp);
+//        req.getRequestDispatcher("/student/register.jsp").forward(req,resp);
+        req.setAttribute("view", "/student/register.jsp");
     }
 
     @Override
@@ -53,6 +54,7 @@ public class StudentUpdateServlet extends HttpServlet {
 
         studentRepository.update(student);
 
-        resp.sendRedirect(req.getContextPath()+ "/student/view?id="+id);
+//        resp.sendRedirect(req.getContextPath()+ "/student/view?id="+id);
+        req.setAttribute("view", "redirect:/student/view.do?id="+id);
     }
 }

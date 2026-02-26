@@ -33,6 +33,7 @@ public class FrontServlet extends HttpServlet {
             rd.include(req,resp);
 
             String view=(String) req.getAttribute("view");
+            log.info("View: {}", view);
             if(view.startsWith(REDIRECT_PREFIX)) {
                 resp.sendRedirect(view.substring(REDIRECT_PREFIX.length()));
             } else {
@@ -61,6 +62,10 @@ public class FrontServlet extends HttpServlet {
             processingServlet="/student/update";
         } else if("/student/delete.do".equals(servletPath)) {
             processingServlet="/student/delete";
+        }
+
+        else {
+            throw new IllegalArgumentException("Unknown servlet path: "+servletPath);
         }
 
         return processingServlet;

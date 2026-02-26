@@ -9,6 +9,6 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="<c:url value="/student/list"/>">Student List</a>
+<a href="<c:url value="/student/list.do"/>">Student List</a>
 </body>
 </html>

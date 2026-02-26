@@ -35,6 +35,7 @@ public class StudentListServlet extends HttpServlet {
         // 학생 목록을 request attribute에 저장
         req.setAttribute("studentList", studentList);
         // /student/list.jsp 페이지로 forward
-        req.getRequestDispatcher("/student/list.jsp").forward(req,resp);
+//        req.getRequestDispatcher("/student/list.jsp").forward(req,resp);
+        req.setAttribute("view", "/student/list.jsp");
     }
 }

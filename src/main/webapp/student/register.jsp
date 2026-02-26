@@ -17,10 +17,10 @@
 -->
 <c:choose>
     <c:when test="${empty student}">
-        <c:set var="action" value="${pageContext.request.contextPath}/student/register"/>
+        <c:set var="action" value="${pageContext.request.contextPath}/student/register.do"/>
     </c:when>
     <c:otherwise>
-        <c:set var="action" value="${pageContext.request.contextPath}/student/update"/>
+        <c:set var="action" value="${pageContext.request.contextPath}/student/update.do"/>
     </c:otherwise>
 </c:choose>
 
