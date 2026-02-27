@@ -33,6 +33,15 @@ public class FrontServlet extends HttpServlet {
         resp.setCharacterEncoding("utf-8");
 
         try {
+            if("/error.do".equals(req.getServletPath()) && req.getAttribute(ERROR_STATUS_CODE) != null) {
+                // 이미 에러 처리 중이면 ErrorController 실행
+                Command command=(Command) controllerFactory.getBean(req.getMethod(), req.getServletPath());
+                if(command != null) {
+                    String view = command.execute(req, resp);
+                    req.getRequestDispatcher(view).include(req, resp);
+                }
+                return;
+            }
 //            Command command=resolveServlet(req.getServletPath(), req.getMethod());
             Command command=(Command) controllerFactory.getBean(req.getMethod(), req.getServletPath());
 
@@ -50,13 +59,11 @@ public class FrontServlet extends HttpServlet {
                 req.getRequestDispatcher(view).include(req,resp);
             }
         } catch (Exception e) {
-            if(req.getAttribute(ERROR_STATUS_CODE)==null) {
-                req.setAttribute(ERROR_STATUS_CODE, HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-                req.setAttribute(ERROR_EXCEPTION_TYPE, e.getClass());
-                req.setAttribute(ERROR_MESSAGE, e.getMessage());
-                req.setAttribute(ERROR_EXCEPTION, e);
-                req.setAttribute(ERROR_REQUEST_URI, req.getRequestURI());
-            }
+            req.setAttribute(ERROR_STATUS_CODE, HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            req.setAttribute(ERROR_EXCEPTION_TYPE, e.getClass());
+            req.setAttribute(ERROR_MESSAGE, e.getMessage());
+            req.setAttribute(ERROR_EXCEPTION, e);
+            req.setAttribute(ERROR_REQUEST_URI, req.getRequestURI());
 
             req.getRequestDispatcher("/error.do").forward(req,resp);
         }
