@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: chosun-nhn29
@@ -16,23 +17,23 @@
       <tbody>
         <tr>
           <th>status_code</th>
-          <td>${status_code}</td>
+          <td><c:out value="${status_code}" default="500"/></td>
         </tr>
         <tr>
           <th>exception_type</th>
-          <td>${exception_type}</td>
+          <td><c:out value="${exception_type}" /></td>
         </tr>
         <tr>
           <th>message</th>
-          <td>${message}</td>
+          <td><c:out value="${message}" default="알 수 없는 오류"/> </td>
         </tr>
         <tr>
           <th>exception</th>
-          <td>${exception}</td>
+          <td><c:out value="${exception}"/></td>
         </tr>
         <tr>
           <th>request_uri</th>
-          <td>${request_uri}</td>
+          <td><c:out value="${request_uri}"/></td>
         </tr>
       </tbody>
     </table>
