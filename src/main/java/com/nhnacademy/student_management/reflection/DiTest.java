@@ -4,6 +4,7 @@ import com.nhnacademy.student_management.reflection.domain.User;
 import com.nhnacademy.student_management.reflection.service.InjectUtil;
 import com.nhnacademy.student_management.reflection.service.UserService;
 
+// DI(Dependency Injection)
 public class DiTest {
     public static void main(String[] args) {
         UserService userService= InjectUtil.getObject(UserService.class);

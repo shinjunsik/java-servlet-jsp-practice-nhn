@@ -1,6 +1,6 @@
 package com.nhnacademy.student_management.student.controller.impl;
 
-import com.nhnacademy.student_management.student.annotation.RequestMapping;
+import com.nhnacademy.student_management.student.controller.annotation.RequestMapping;
 import com.nhnacademy.student_management.student.controller.Command;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

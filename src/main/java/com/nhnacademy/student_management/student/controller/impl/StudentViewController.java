@@ -1,6 +1,6 @@
 package com.nhnacademy.student_management.student.controller.impl;
 
-import com.nhnacademy.student_management.student.annotation.RequestMapping;
+import com.nhnacademy.student_management.student.controller.annotation.RequestMapping;
 import com.nhnacademy.student_management.student.controller.Command;
 import com.nhnacademy.student_management.student.domain.Student;
 import com.nhnacademy.student_management.student.repository.StudentRepository;

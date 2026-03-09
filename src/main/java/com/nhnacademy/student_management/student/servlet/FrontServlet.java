@@ -2,6 +2,7 @@ package com.nhnacademy.student_management.student.servlet;
 
 import com.nhnacademy.student_management.student.controller.Command;
 import com.nhnacademy.student_management.student.controller.ControllerFactory;
+import com.nhnacademy.student_management.student.controller.StopWatchProxy;
 import com.nhnacademy.student_management.student.controller.impl.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -50,6 +51,11 @@ public class FrontServlet extends HttpServlet {
             }
 
             String view=command.execute(req,resp);
+
+//            // Command 인터페이스를 구현하는 프록시 클래스인 StopWatchProxy를 사용하여 실행 시간을 측정 -> 중복 코드 제거
+//            StopWatchProxy commandProxy=new StopWatchProxy(command);
+//
+//            String view=commandProxy.execute(req, resp);
 
 
             log.info("View: {}", view);

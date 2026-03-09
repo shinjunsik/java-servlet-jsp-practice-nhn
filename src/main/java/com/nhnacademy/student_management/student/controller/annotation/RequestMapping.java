@@ -1,4 +1,4 @@
-package com.nhnacademy.student_management.student.annotation;
+package com.nhnacademy.student_management.student.controller.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
